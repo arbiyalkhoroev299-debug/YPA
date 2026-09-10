@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>YahaPhotographerApp</title>
     
+    <!-- Настройки PWA для добавления на экран Домой iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="YahaPhoto">
@@ -198,7 +199,7 @@
     <script>
         let base64Image = "";
 
-        // При загрузке восстанавливаем ключ из памяти устройства
+        // Восстанавливаем сохраненный ключ при загрузке
         window.onload = function() {
             const savedKey = localStorage.getItem("openrouter_api_key");
             if (savedKey) {
@@ -241,7 +242,7 @@
                 return;
             }
 
-            // Сохраняем ключ локально
+            // Сохраняем ключ локально в память устройства
             localStorage.setItem("openrouter_api_key", apiKey);
 
             const btn = document.getElementById('btn-analyze');
@@ -274,7 +275,7 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        "model": "google/gemini-flash-1.5",
+                        "model": "google/gemini-2.0-flash-001",
                         "messages": [
                             {
                                 "role": "user",
